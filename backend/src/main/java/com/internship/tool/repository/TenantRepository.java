@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface TenantRepository extends JpaRepository<Tenant, Long> {
     Optional<Tenant> findByName(String name);
+    org.springframework.data.domain.Page<Tenant> findByNameContainingIgnoreCase(String name, org.springframework.data.domain.Pageable pageable);
 }
