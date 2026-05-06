@@ -16,6 +16,11 @@ public class AiController {
     @PostMapping("/describe")
     public ResponseEntity<Map<String, Object>> describeTenant(@RequestBody Map<String, String> request) {
         String input = request.get("input");
-        return ResponseEntity.ok(aiServiceClient.callDescribe(input));
+        String aiResponse = aiServiceClient.callDescribe(input);
+        
+        Map<String, Object> response = new java.util.HashMap<>();
+        response.put("result", aiResponse);
+        
+        return ResponseEntity.ok(response);
     }
 }
